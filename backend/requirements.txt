@@ -1,7 +1,7 @@
 # Python 依赖清单（开发时逐条启用并安装）
 # 后端主框架与服务器
-# fastapi
-# uvicorn[standard]
+ fastapi
+uvicorn[standard]
 # 数据库
 # sqlalchemy
 # pymysql
