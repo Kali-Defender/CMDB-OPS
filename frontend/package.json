@@ -1,0 +1,9 @@
+{
+  "_说明": "前端依赖与脚本配置；开发时补充真实依赖后再安装",
+  "name": "cmdb-ops-frontend",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {},
+  "dependencies": {},
+  "devDependencies": {}
+}

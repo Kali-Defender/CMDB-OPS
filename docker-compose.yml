@@ -1,0 +1,5 @@
+# Docker Compose 编排（后期一键启动演示环境用）。
+# 后续开发完成后再补充以下服务：
+# - mysql：MySQL 8 数据库
+# - backend：FastAPI 后端服务
+# - frontend：前端构建与静态服务

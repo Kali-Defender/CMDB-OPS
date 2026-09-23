@@ -1,0 +1,16 @@
+# Python 依赖清单（开发时逐条启用并安装）
+# 后端主框架与服务器
+# fastapi
+# uvicorn[standard]
+# 数据库
+# sqlalchemy
+# pymysql
+# 认证
+# python-jose[cryptography]
+# passlib[bcrypt]
+# SSH 远程执行
+# paramiko
+# 配置与数据校验
+# python-dotenv
+# pydantic
+# pydantic-settings
