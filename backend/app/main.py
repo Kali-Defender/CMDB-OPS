@@ -10,9 +10,13 @@
 启动方式：uvicorn app.main:app --reload
 """
 from fastapi import FastAPI
+from app import models                      
+from app.core.database import Base, engine
 
 app=FastAPI()
 
 @app.get("/")
 async def root():
     return {"message": "Hello World"}
+
+Base.metadata.create_all(bind=engine)

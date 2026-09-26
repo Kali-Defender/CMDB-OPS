@@ -3,14 +3,15 @@
  fastapi
 uvicorn[standard]
 # 数据库
-# sqlalchemy
-# pymysql
+sqlalchemy
+pymysql
 # 认证
 # python-jose[cryptography]
 # passlib[bcrypt]
 # SSH 远程执行
 # paramiko
+cryptography
 # 配置与数据校验
-# python-dotenv
+python-dotenv
 # pydantic
 # pydantic-settings
