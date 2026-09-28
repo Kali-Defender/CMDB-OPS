@@ -1,17 +1,23 @@
 # Python 依赖清单（开发时逐条启用并安装）
+
 # 后端主框架与服务器
- fastapi
+fastapi
 uvicorn[standard]
+
 # 数据库
 sqlalchemy
 pymysql
+cryptography          # pymysql 连接 MySQL 8.4 认证所需
+
 # 认证
-# python-jose[cryptography]
-# passlib[bcrypt]
-# SSH 远程执行
-# paramiko
-cryptography
+python-jose[cryptography]
+bcrypt
+
 # 配置与数据校验
 python-dotenv
+
+# SSH 远程执行（第 8 步启用）
+# paramiko
+
 # pydantic
 # pydantic-settings
