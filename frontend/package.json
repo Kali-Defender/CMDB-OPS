@@ -1,9 +1,19 @@
 {
-  "_说明": "前端依赖与脚本配置；开发时补充真实依赖后再安装",
-  "name": "cmdb-ops-frontend",
-  "version": "0.1.0",
+  "name": "frontend",
   "private": true,
-  "scripts": {},
-  "dependencies": {},
-  "devDependencies": {}
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "ant-design-vue": "^4.2.6",
+    "vue": "^3.5.42"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^6.0.8",
+    "vite": "^8.3.0"
+  }
 }

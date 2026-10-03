@@ -1,5 +1,12 @@
-// 前端入口文件。
-// 职责：
-// 1. 创建 Vue 应用并挂载到 #app
-// 2. 注册路由（router）、状态管理（store）
-// 3. 全局引入 Ant Design Vue 组件库
+import { createApp } from 'vue'
+import Antd from 'ant-design-vue'
+//导入组件
+import 'ant-design-vue/dist/reset.css'
+//导入样式
+import './style.css'
+import App from './App.vue'
+
+const app = createApp(App)
+app.use(Antd)
+//全局注册
+app.mount('#app')

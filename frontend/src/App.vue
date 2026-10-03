@@ -1,1 +1,7 @@
-<!-- 根组件。职责：提供全局布局入口，通过 <router-view> 渲染各页面。 -->
+<script setup>
+import LoginView from './views/LoginView.vue'
+</script>
+
+<template>
+  <LoginView />
+</template>

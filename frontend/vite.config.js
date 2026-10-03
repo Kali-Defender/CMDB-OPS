@@ -1,5 +1,7 @@
-// Vite 构建配置。
-// 职责：
-// 1. 配置 Vue 插件
-// 2. 配置开发服务器端口
-// 3. 配置 /api 代理到 FastAPI 后端，解决跨域
+import vue from '@vitejs/plugin-vue'
+import { defineConfig } from 'vite'
+
+// https://vite.dev/config/
+export default defineConfig({
+  plugins: [vue()],
+})
