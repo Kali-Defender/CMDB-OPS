@@ -6,17 +6,17 @@
         <p>运维资产统一管理 · 自动化作业调度</p>
       </div>
 
-      <a-form class="login-form" autocomplete="off">
+      <a-form class="login-form" autocomplete="off" @submit.prevent>
         <a-form-item name="username">
-          <a-input placeholder="请输入用户名" size="large"/>
+          <a-input v-model:value="username" placeholder="请输入用户名" size="large"/>
         </a-form-item>
 
         <a-form-item name="password">
-          <a-input-password placeholder="请输入密码" size="large"/>
+          <a-input-password v-model:value="password" placeholder="请输入密码" size="large"/>
         </a-form-item>
 
         <a-form-item>
-          <a-button type="primary" class="login-btn" size="large" block>
+          <a-button type="primary" class="login-btn" size="large" block html-type="button" @click="handleLogin">
             登录
           </a-button>
         </a-form-item>
@@ -24,6 +24,38 @@
     </a-card>
   </div>
 </template>
+
+<script setup>
+import { ref } from 'vue'
+import {message} from 'ant-design-vue'
+import {login} from '../api/auth'
+
+const username = ref('')
+const password = ref('')
+const loading = ref(false)
+
+const handleLogin = async () => {
+  if (!username.value || !password.value) {
+    message.error('用户名和密码不能为空')
+    return
+  }
+
+  loading.value = true
+  try {
+    const response = await login({ username: username.value, password: password.value })
+    
+    localStorage.setItem('token', response.data.access_token)
+    
+    message.success('登录成功')
+    // 在这里处理登录成功后的逻辑，例如跳转到首页
+  } catch (error) {
+    message.error('登录失败，请检查用户名和密码')
+  } finally {
+    loading.value = false
+  }
+}
+</script>
+
 
 <style scoped>
 .login-container {
@@ -41,7 +73,7 @@
   right: 0;
   bottom: 0;
   box-sizing: border-box;
-  z-index: 9999;
+  
   background-image:
     linear-gradient(rgba(24, 144, 255, 0.12) 1px, transparent 1px),
     linear-gradient(90deg, rgba(24, 144, 255, 0.12) 1px, transparent 1px);
