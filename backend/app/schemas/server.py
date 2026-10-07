@@ -7,7 +7,7 @@
 """
 from datetime import datetime
 from pydantic import BaseModel, ConfigDict
-
+from typing import Optional
 class ServerOut(BaseModel):
     model_config = ConfigDict(from_attributes=True)   # ← 自动转换的开关
 
@@ -22,3 +22,27 @@ class ServerOut(BaseModel):
     status: str
     remark: str
     created_at: datetime
+
+class ServerCreate(BaseModel):
+    name: str
+    ip: str
+    port: int = 22
+    username: str
+    password: str
+    type: str = ""
+    env: str = ""
+    owner: str = ""
+    status: str = "在线"
+    remark: str = ""
+
+class ServerUpdate(BaseModel):
+    name: str
+    ip: str
+    port: int = 22
+    username: str
+    password: Optional[str] = None   # ← 关键：None = 不改密码
+    type: str = ""
+    env: str = ""
+    owner: str = ""
+    status: str = "在线"
+    remark: str = ""
