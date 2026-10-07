@@ -29,10 +29,11 @@
 import { ref } from 'vue'
 import {message} from 'ant-design-vue'
 import {login} from '../api/auth'
-
+import { useRouter } from 'vue-router'
 const username = ref('')
 const password = ref('')
 const loading = ref(false)
+const router = useRouter()
 
 const handleLogin = async () => {
   if (!username.value || !password.value) {
@@ -48,6 +49,7 @@ const handleLogin = async () => {
     
     message.success('登录成功')
     // 在这里处理登录成功后的逻辑，例如跳转到首页
+    router.push('/servers')
   } catch (error) {
     message.error('登录失败，请检查用户名和密码')
   } finally {

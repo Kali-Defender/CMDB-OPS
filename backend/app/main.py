@@ -16,7 +16,7 @@ from app import models
 # 导入数据库基础类和引擎
 from app.core.database import Base, engine
 # 导入 auth 路由
-from app.api import auth
+from app.api import auth,servers
 
 from fastapi.middleware.cors import CORSMiddleware
 #给后端配置CORS跨域，允许前端访问
@@ -30,6 +30,7 @@ app.add_middleware(
 )
 # 注册 auth 路由，前缀为 /api
 app.include_router(auth.router, prefix="/api")
+app.include_router(servers.router, prefix="/api")
 
 @app.get("/")
 async def root():
