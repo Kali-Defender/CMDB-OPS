@@ -17,7 +17,7 @@ bcrypt
 python-dotenv
 
 # SSH 远程执行（第 8 步启用）
-# paramiko
+paramiko
 
 # pydantic
 # pydantic-settings

@@ -15,3 +15,7 @@ export function updateServer(id, data) {
 export function deleteServer(id) {
      return request.delete(`/api/servers/${id}`)
    }
+
+export function executeCommand(data) {
+     return request.post('/api/execute', data)
+   }
