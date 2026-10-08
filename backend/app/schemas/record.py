@@ -15,3 +15,17 @@ class ExecuteResult(BaseModel):
        ip: str
        success: bool
        output: str
+
+from datetime import datetime                                                                                                                                                     
+from pydantic import ConfigDict                                                                                                                                        
+                                                                                                                                                                                     
+class RecordOut(BaseModel):                                                                                                                                                       
+       model_config = ConfigDict(from_attributes=True)                                                                                                                               
+                                                                                                                                                                                     
+       id: int                                                                                                                                                                       
+       executor: str                                                                                                                                                                 
+       servers: str                                                                                                                                                                  
+       command: str                                                                                                                                                                  
+       result: str                                                                                                                                                                   
+       status: str                                                                                                                                                                   
+       executed_at: datetime
