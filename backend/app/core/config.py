@@ -15,9 +15,11 @@ load_dotenv()
 DATABASE_URL = os.getenv("DATABASE_URL")
 SECRET_KEY = os.getenv("SECRET_KEY")
 ACCESS_TOKEN_EXPIRE_MINUTES = int(os.getenv("ACCESS_TOKEN_EXPIRE_MINUTES",5000))
-
+FERNET_KEY = os.getenv("FERNET_KEY")
 # 环境变量找不到时的处理逻辑
 if not DATABASE_URL:
     raise ValueError("环境变量缺失: DATABASE_URL 未配置")
 if not SECRET_KEY:
     raise ValueError("环境变量缺失: SECRET_KEY 未配置")
+if not FERNET_KEY:
+    raise ValueError("环境变量缺失: FERNET_KEY 未配置")

@@ -12,7 +12,7 @@ from app.models.server import Server
 from app.models.record import Record
 from app.schemas.record import ExecuteRequest, ExecuteResult
 from app.services.ssh_service import execute_ssh
-
+from app.core.security import decrypt_password
 router = APIRouter()
 
 @router.post("/execute", response_model=list[ExecuteResult])
@@ -23,7 +23,8 @@ def execute_command(data: ExecuteRequest, db: Session = Depends(get_db),current_
        # 2. 逐台执行，收集结果
        results = []
        for server in servers:
-           r = execute_ssh(server.ip, server.port, server.username, server.password,data.command)
+           plain_password = decrypt_password(server.password)
+           r = execute_ssh(server.ip, server.port, server.username, plain_password, data.command)
            results.append(ExecuteResult(
                server_id=server.id,
                server_name=server.name,

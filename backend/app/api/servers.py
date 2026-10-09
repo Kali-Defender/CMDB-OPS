@@ -11,7 +11,7 @@ from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
 
 from app.api.deps import get_db, get_current_user
-from app.core.security import hash_password
+from app.core.security import encrypt_password
 from app.models.server import Server
 from app.schemas.server import ServerCreate, ServerUpdate, ServerOut
 
@@ -35,7 +35,7 @@ def create_server(data: ServerCreate, db: Session = Depends(get_db),current_user
            ip=data.ip,
            port=data.port,
            username=data.username,
-           password=hash_password(data.password),  
+           password=encrypt_password(data.password),  
            type=data.type,
            env=data.env,
            owner=data.owner,
@@ -69,7 +69,7 @@ def update_server(server_id: int, data: ServerUpdate, db: Session = Depends(get_
 
        # 3. 密码特殊处理：传了才改，没传保留原密码
        if data.password:  # 非空才改（None 和 "" 都跳过）
-           server.password = hash_password(data.password)
+           server.password = encrypt_password(data.password)
 
        # 4. 保存
        db.commit()

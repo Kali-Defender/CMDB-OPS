@@ -13,7 +13,9 @@ from datetime import datetime, timedelta, timezone
 # 处理令牌的过期时间
 from app.core.config import SECRET_KEY, ACCESS_TOKEN_EXPIRE_MINUTES
 # 引入 JWT 密钥和令牌过期时间
-
+from cryptography.fernet import Fernet                                                                                                                                            
+from app.core.config import FERNET_KEY
+fernet = Fernet(FERNET_KEY)
 def hash_password(password:str)->str:
     pwd=password.encode("utf-8")
     # 将字符串密码明文转按utf-8的编码模式编码
@@ -39,3 +41,8 @@ def create_access_token(data:dict)->str:
 def decode_access_token(token:str)->dict:
     return jwt.decode(token,SECRET_KEY,algorithms=["HS256"])
     # 验证签名并取回数据
+def encrypt_password(plain: str) -> str:                                                                                                                                          
+       return fernet.encrypt(plain.encode()).decode()                                                                                                                               
+                                                                                                                                                                                     
+def decrypt_password(encrypted: str) -> str:                                                                                                                                      
+       return fernet.decrypt(encrypted.encode()).decode()
