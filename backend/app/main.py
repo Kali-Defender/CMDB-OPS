@@ -39,3 +39,18 @@ async def root():
     return {"message": "Hello World"}
 
 Base.metadata.create_all(bind=engine)
+
+from app.core.database import SessionLocal
+from app.models.user import User
+from app.core.security import hash_password
+
+_db = SessionLocal()
+if _db.query(User).count() == 0:
+       _db.add(User(
+           username="admin",
+           password=hash_password("admin123"),
+           name="管理员",
+           role="管理员",
+       ))
+       _db.commit()
+_db.close()

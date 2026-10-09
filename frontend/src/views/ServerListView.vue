@@ -2,7 +2,8 @@
   <div>
     <div style="margin-bottom: 12px">
       <router-link to="/servers">服务器列表</router-link> |
-      <router-link to="/records">执行记录</router-link>
+      <router-link to="/records">执行记录</router-link> |
+      <router-link to="/users">用户管理</router-link>
     </div>
     <a-button type="primary" @click="openCreate" style="margin-bottom: 16px">
       新增服务器
