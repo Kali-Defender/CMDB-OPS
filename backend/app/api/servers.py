@@ -55,7 +55,10 @@ def update_server(server_id: int, data: ServerUpdate, db: Session = Depends(get_
        server = db.query(Server).filter(Server.id == server_id).first()
        if server is None:
            raise HTTPException(status_code=404, detail="服务器不存在")
-
+       if data.ip != server.ip:
+           exists = db.query(Server).filter(Server.ip == data.ip, Server.id != server_id).first()
+           if exists:
+               raise HTTPException(status_code=400, detail="该 IP 已被其他服务器使用")
        # 2. 更新普通字段
        server.name = data.name
        server.ip = data.ip
