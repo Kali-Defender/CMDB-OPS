@@ -11,6 +11,7 @@ const router = createRouter({
       { path: '/servers', component: ServerListView },
       { path: '/records', component: RecordListView }, 
       { path: '/users', component: UserListView },      // 添加用户管理路由
+      { path: '/deploy', component: DeployView },      // 添加部署路由
     ],
 })
 

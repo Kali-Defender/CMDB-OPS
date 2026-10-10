@@ -2,7 +2,8 @@
      <div>                                                                                                                                                                             
      <router-link to="/servers">服务器列表</router-link> |                                                                                                                           
      <router-link to="/records">执行记录</router-link> |
-      <router-link to="/users">用户管理</router-link>                                                                                                                               
+      <router-link to="/users">用户管理</router-link>
+      <router-link to="/deploy">部署</router-link>                                                                                                                               
    </div>                                                                                                                                                                         
      <div>                                                                                                                                                                           
        <h2>执行记录</h2>                                                                                                                                                             
