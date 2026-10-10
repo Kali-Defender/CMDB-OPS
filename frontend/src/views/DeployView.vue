@@ -6,7 +6,7 @@
      <router-link to="/users">用户管理</router-link> |
      <router-link to="/deploy">配置下发</router-link>
    </div>  
-    <a-select v-model:value="selectedIds" mode="multiple" placeholder="选择服务器">
+    <a-select v-model:value="selectedIds" mode="multiple" placeholder="选择服务器" size="large" style="width: 100%; margin-bottom: 12px">
      <a-select-option v-for="s in servers" :key="s.id" :value="s.id">
        {{ s.name }}（{{ s.ip }}）
      </a-select-option>

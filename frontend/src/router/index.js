@@ -3,6 +3,7 @@ import LoginView from '../views/LoginView.vue'
 import ServerListView from '../views/ServerListView.vue'
 import RecordListView from '../views/RecordListView.vue' 
 import UserListView from '../views/UserListView.vue'
+import DeployView from '../views/DeployView.vue'  // 导入部署视图组件
 const router = createRouter({
     history: createWebHistory(),
     routes: [
