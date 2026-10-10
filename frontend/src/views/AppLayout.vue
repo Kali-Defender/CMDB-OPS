@@ -5,7 +5,7 @@
       style="color: #fff; font-size: 18px; font-weight: 600; padding: 0 24px;
              display: flex; justify-content: space-between; align-items: center"
     >
-      <span>CMDB 自动化运维平台</span>
+      <span>服务器资产管理与自动化运维平台</span>
       <a-button type="text" style="color: #fff" @click="logout">退出登录</a-button>
     </a-layout-header>
 

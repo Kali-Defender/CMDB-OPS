@@ -2,7 +2,7 @@
   <div class="login-container">
     <a-card class="login-card" :bordered="false">
       <div class="login-header">
-        <h2>CMDB + 自动化运维平台</h2>
+        <h2>服务器资产管理与自动化运维平台</h2>
         <p>运维资产统一管理 · 自动化作业调度</p>
       </div>
 
