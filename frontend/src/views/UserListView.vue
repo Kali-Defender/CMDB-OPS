@@ -2,10 +2,6 @@
   <!-- 外层容器 -->
   <div
     style="
-      position: fixed;
-      inset: 0;
-      width: 100vw;
-      height: 100vh;
       margin: 0;
       padding: 0;
       box-sizing: border-box;
@@ -26,20 +22,14 @@
     <div
       style="
         width: 100%;
-        max-width: 1000px;
-        min-height: 50vh;
+        min-height: calc(100vh - 130px);
         padding: 24px 28px;
         background: #1f1f1f;
         border-radius: 10px;
         box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
       "
     >
-      <div style="margin-bottom: 12px">
-        <router-link to="/servers" style="color:#1890ff;text-decoration:none;margin-right:4px">服务器列表</router-link> |
-        <router-link to="/records" style="color:#1890ff;text-decoration:none;margin:0 4px">执行记录</router-link> |
-        <router-link to="/users" style="color:#1890ff;text-decoration:none;margin:0 4px">用户管理</router-link> |
-        <router-link to="/deploy" style="color:#1890ff;text-decoration:none;margin-left:4px">部署</router-link>
-      </div>
+      
       <a-button type="primary" @click="openCreate" style="margin-bottom: 16px">
         新增用户
       </a-button>

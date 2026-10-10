@@ -4,16 +4,33 @@ import ServerListView from '../views/ServerListView.vue'
 import RecordListView from '../views/RecordListView.vue' 
 import UserListView from '../views/UserListView.vue'
 import DeployView from '../views/DeployView.vue'  // 导入部署视图组件
+import DashboardView from '../views/DashboardView.vue'
+import AppLayout from '../views/AppLayout.vue'
 const router = createRouter({
     history: createWebHistory(),
     routes: [
-      { path: '/', redirect: '/login' },        // 访问根路径 → 跳到登录页
-      { path: '/login', component: LoginView },
-      { path: '/servers', component: ServerListView },
-      { path: '/records', component: RecordListView }, 
-      { path: '/users', component: UserListView },      // 添加用户管理路由
-      { path: '/deploy', component: DeployView },      // 添加部署路由
+      {
+     path: '/',
+     component: AppLayout,
+     redirect: '/dashboard',
+     children: [
+       { path: 'dashboard', component: DashboardView },
+       { path: 'servers', component: ServerListView },
+       { path: 'records', component: RecordListView },
+       { path: 'users', component: UserListView },
+       { path: 'deploy', component: DeployView },
+     ],
+   },
+   { path: '/login', component: LoginView },      // 添加部署路由
     ],
+})
+
+// 登录守卫：没 token 就踢回登录页（新版写法：直接 return，不用 next()）
+router.beforeEach((to) => {
+  const token = localStorage.getItem('token')
+  if (to.path !== '/login' && !token) {
+    return '/login'
+  }
 })
 
 export default router
