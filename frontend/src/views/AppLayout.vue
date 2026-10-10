@@ -1,8 +1,12 @@
 <template>
   <a-layout style="min-height: 100vh">
     <!-- 顶部：横跨全宽 -->
-    <a-layout-header style="color: #fff; font-size: 18px; font-weight: 600; padding-left: 24px">
-      CMDB 自动化运维平台
+    <a-layout-header
+      style="color: #fff; font-size: 18px; font-weight: 600; padding: 0 24px;
+             display: flex; justify-content: space-between; align-items: center"
+    >
+      <span>CMDB 自动化运维平台</span>
+      <a-button type="text" style="color: #fff" @click="logout">退出登录</a-button>
     </a-layout-header>
 
     <a-layout>
@@ -28,8 +32,16 @@
 <script setup>
 import { computed } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
+import { message } from 'ant-design-vue'
+
 const route = useRoute()
 const router = useRouter()
 const activeKey = computed(() => route.path)
 const onMenuClick = ({ key }) => router.push(key)
+
+const logout = () => {
+  localStorage.removeItem('token')   // 清掉登录凭证
+  message.success('已退出登录')
+  router.push('/login')
+}
 </script>
